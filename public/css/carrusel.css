@@ -1,0 +1,116 @@
+section .carousel-inner {
+    height: 37.5em;
+}
+
+section .carousel-item {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    z-index: 1;
+}
+
+section .carousel-item:before {
+    opacity: .7;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(../images/banner-pattern.png) repeat;
+    background-color: rgba(25, 25, 25, 0.8);
+    z-index: 2;
+}
+
+section #fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.carousel {
+    position: relative;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    z-index: 15;
+    width: 60%;
+    margin-left: -30%;
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 1px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+body #carouselcontrol .carousel-caption {
+    padding-bottom: 30px;
+    margin-bottom: 65px;
+    top: 22%;
+}
+
+body #carouselcontrol .carousel-caption .slider_btn {
+    margin: 30px 0px;
+}
+
+body #carouselcontrol .carousel-caption h1.banner_heading {
+    font-size: 45px;
+    font-weight: bolder;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+body #carouselcontrol .carousel-caption p.banner_txt {
+    font-size: 20px;
+    line-height: 36px;
+}
+
+.carousel-caption {
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    bottom: 20px;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.carousel-caption .btn {
+    text-shadow: none;
+}
+
+body .slide-up {
+    animation: slide-up 1.5s;
+}
+
+@keyframes slide-up {
+    from {
+        padding-top: 150px;
+        opacity: .25;
+        line-height: 80px;
+    }
+    to {
+        padding-top: 20;
+        opacity: 1;
+        line-height: 25px;
+    }
+}

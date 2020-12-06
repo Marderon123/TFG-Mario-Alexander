@@ -1,0 +1,21 @@
+nav h1 {
+    font-family: 'Titilium Web', sans-serif;
+}
+
+.navbar {
+    background-color: white;
+    min-height: 5em;
+    text-transform: uppercase;
+}
+
+.nav-link {
+    color: black;
+}
+
+
+/*logo*/
+
+.logo-brand {
+    min-width: 4em;
+    max-width: 4em;
+}

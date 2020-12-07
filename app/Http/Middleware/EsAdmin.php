@@ -17,12 +17,13 @@ class EsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = Auth::user();
+        if (Auth::user()->usertype == 'administrador') {
 
-        if (!$user->esAdmin()) {
-            return view('index');
+            return $next($request);
+
+        } else {
+
+            return redirect('/home');
         }
-
-        return $next($request);
     }
 }

@@ -15,27 +15,24 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-
-    /*$user = Auth::user();
-
-    if ($user->esAdmin()) {
-        echo "Eres admin";
-    } else {
-        echo "Eres cliente";
-    }*/
-
     return view('index');
 });
+/*
+Route::get('/admin', ['middleware' => 'EsAdmin'], function () {
+    return view('admin');
+});
 
+Route::get('/user', ['middleware' => 'auth'], function () {
+    return view('user');
+});*/
 
 
 Auth::routes();
 
- Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//Route::get('/user', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/user', [App\Http\Controllers\ClientController::class, 'index'])->name('user');
 
+Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+
+//Route::get('/user', [App\Http\Controllers\ClientController::class, 'index'])->name('user');

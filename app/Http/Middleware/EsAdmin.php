@@ -17,13 +17,16 @@ class EsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->usertype == 'administrador') {
+        if (Auth::user()) {
+            if (Auth::user()->usertype == 'administrador') {
 
-            return $next($request);
+                return $next($request);
+            } else {
 
+                return redirect('user')->with('status', 'Necesitas iniciar sesión como administrador');
+            }
         } else {
-
-            return redirect('/home');
+            return redirect('login');
         }
     }
 }

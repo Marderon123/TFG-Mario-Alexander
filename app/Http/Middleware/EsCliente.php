@@ -17,12 +17,13 @@ class EsCliente
      */
     public function handle(Request $request, Closure $next)
     {
-        $user = Auth::user();
+        if (Auth::user()) {
+            if (Auth::user()->usertype == 'client') {
 
-        if ($user->esCliente()) {
-            return view('user');
+                return $next($request);
+            }
+        } else {
+            return redirect('login');
         }
-
-        return $next($request);
     }
 }

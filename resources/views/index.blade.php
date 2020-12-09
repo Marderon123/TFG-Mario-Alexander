@@ -53,9 +53,6 @@
                         <a class="nav-link" id="home" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">About us</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" id="login" href="{{ route('login') }}">Login</a>
                     </li>
                 </ul>

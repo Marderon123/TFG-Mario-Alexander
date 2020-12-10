@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => '2º DAW- Mario Alexander',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -188,7 +188,7 @@ return [
 
     'use_route_url' => false,
 
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
 
     'logout_url' => 'logout',
 
@@ -239,7 +239,12 @@ return [
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'can'  => 'manage-blog ',
+        ],
+        [
+            'text' => 'Dashboard',
+            'route'  => 'admin',
+            'icon' => 'fas fa-fw fa-home',
         ],
         [
             'text'        => 'pages',
@@ -251,7 +256,7 @@ return [
         ['header' => 'account'],
         [
             'text' => 'users',
-            'url'  => 'admin/settings',
+            'url'  => '/dashboard/users',
             'icon' => 'fas fa-fw fa-user',
         ],
         [

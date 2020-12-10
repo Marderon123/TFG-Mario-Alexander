@@ -34,5 +34,8 @@ Auth::routes();
 Route::get('/user', [App\Http\Controllers\ClientController::class, 'index'])->name('user');
 
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+Route::get('/dashboard/users', function () {
+    return view('dashboard.users');
+});
 
 //Route::get('/user', [App\Http\Controllers\ClientController::class, 'index'])->name('user');

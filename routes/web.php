@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,9 +34,13 @@ Auth::routes();
 
 Route::get('/user', [App\Http\Controllers\ClientController::class, 'index'])->name('user');
 
+//Route::group(['prefix' =>'admin', 'as' => 'admin'], function(){});
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
-Route::get('/dashboard/users', function () {
-    return view('dashboard.users');
-});
+
+Route::resource('/dashboard/users', UsersController::class)->names([
+    'index' => 'dashboard.users',
+    'store' => 'dashboard.users'
+]);
+
 
 //Route::get('/user', [App\Http\Controllers\ClientController::class, 'index'])->name('user');

@@ -3,7 +3,7 @@
 @section('title', '2º DAW- Mario Alexander')
 
 @section('content_header')
-    <h1>Dashboard User</h1>
+    <h1>Dashboard</h1>
 @stop
 
 @section('content')

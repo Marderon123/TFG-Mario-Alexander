@@ -37,10 +37,12 @@ Route::get('/user', [App\Http\Controllers\ClientController::class, 'index'])->na
 //Route::group(['prefix' =>'admin', 'as' => 'admin'], function(){});
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 
-Route::resource('/dashboard/users', UsersController::class)->names([
-    'index' => 'dashboard.users',
-    'store' => 'dashboard.users'
-]);
+Route::resource('/dashboard/users', 'App\Http\Controllers\UsersController');
+/*Route::resource('/dashboard/users', UsersController::class)->names([
+    'index' => '/dashboard/users',
+    'store' => '/dashboard/users',
+    'edit' => '/dashboard/users/{{$usuario->id}}',
+]);*/
 
 
 //Route::get('/user', [App\Http\Controllers\ClientController::class, 'index'])->name('user');

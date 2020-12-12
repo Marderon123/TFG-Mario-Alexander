@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('EsAdmin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,10 +21,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $usuarios = DB::table('users')
-            ->select('users.*')
-            ->orderBy('id')
-            ->get();
+        $usuarios = User::all();
         return view('dashboard.users')->with('usuarios', $usuarios);
     }
     /**
@@ -30,12 +31,6 @@ class UsersController extends Controller
      */
     public function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'usertype' => $data['usertype'],
-        ]);
     }
 
     /**
@@ -52,8 +47,21 @@ class UsersController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'usertype' => ['required', 'string', 'max:255'],
         ]);
-        return redirect()->back();
 
+        if ($validator->fails()) {
+            return back()
+                ->withInput()
+                ->with('ErrorInsert', 'Completar todos los campos')
+                ->withErrors($validator);
+        } else {
+            $usuarios = User::create([
+                'name' => $request['name'],
+                'email' => $request['email'],
+                'password' => Hash::make($request['password']),
+                'usertype' => $request['usertype'],
+            ]);
+            return back()->with('Listo', 'Usuario insertado correctamente');
+        }
     }
 
     /**
@@ -75,7 +83,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario = User::find($id);
+        return view('dashboard.users')->with('usuario', $usuario);
     }
 
     /**
@@ -87,7 +96,11 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $usuario = User::find($id);
+        $usuario->name = $request->get('name');
+        $usuario->email = $request->get('email');
+        $usuario->usertype = $request->get('usertype');
+        $usuario->save();
     }
 
     /**
@@ -98,6 +111,9 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = User::find($id);
+        $usuario->delete();
+
+        return redirect('/dashboard/users');
     }
 }

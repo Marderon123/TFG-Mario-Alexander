@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => '2º DAW- Mario Alexander',
+    'title' => 'ConsulTS',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'use_ico_only' => false,
+    'use_ico_only' => true,
     'use_full_favicon' => false,
 
     /*
@@ -65,11 +65,11 @@ return [
     */
 
     'usermenu_enabled' => true,
-    'usermenu_header' => false,
-    'usermenu_header_class' => 'bg-primary',
-    'usermenu_image' => false,
+    'usermenu_header' => true,
+    'usermenu_header_class' => 'bg-dark',
+    'usermenu_image' => true,
     'usermenu_desc' => false,
-    'usermenu_profile_url' => false,
+    'usermenu_profile_url' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -128,7 +128,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-dark navbar-light',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -188,7 +188,7 @@ return [
 
     'use_route_url' => false,
 
-    'dashboard_url' => 'admin',
+    'dashboard_url' => 'http://127.0.0.1:8000/',
 
     'logout_url' => 'logout',
 
@@ -239,7 +239,7 @@ return [
         [
             'text' => 'blog',
             'url'  => 'admin/blog',
-            'can'  => 'manage-blog ',
+            'can'  => 'admin',
         ],
         [
             'text' => 'Dashboard',
@@ -258,17 +258,24 @@ return [
             'text' => 'users',
             'url'  => '/dashboard/users',
             'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'can'  => 'define-users',
         ],
         [
             'text' => 'graphics',
-            'url'  => 'admin/settings',
+            'url'  => '/dashboard/graphics',
             'icon' => 'fas fa-fw fa-chart-pie',
         ],
+        [
+            'text' => 'Post',
+            'url'  => '/dashboard/posts',
+            'icon' => 'fas fa-fw fa-plus-circle',
+        ],
+        [
+            'text' => 'change_password',
+            'url'  => '/dashboard/password',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
+
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
@@ -306,22 +313,6 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
-        [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
         ],
     ],
 

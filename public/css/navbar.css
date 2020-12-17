@@ -11,11 +11,3 @@ nav h1 {
 .nav-link {
     color: black;
 }
-
-
-/*logo*/
-
-.logo-brand {
-    min-width: 4em;
-    max-width: 4em;
-}

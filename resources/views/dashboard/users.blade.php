@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', '2º DAW- Mario Alexander')
+@section('title', 'ConsulTS')
 
 @section('content_header')
 <!-- Button trigger modal -->
@@ -27,7 +27,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Add user</h4>
+                <h4 class="modal-title" id="myModalLabel">Add user</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -114,14 +114,16 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h4 class="modal-title" id="myModalLabel">Edit user</h4>
+                <h4 class="modal-title" id="myModalLabel">Edit user</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form method="POST" action="">
                 @csrf
-                @method('PUT')
+                @isset($usuario)
+                    @method('PUT')
+                @endisset
                 <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 

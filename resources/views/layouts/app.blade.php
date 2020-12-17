@@ -9,7 +9,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>2º DAW- Mario Alexander</title>
+    <title>ConsulTS</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,6 +24,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{!! asset('css/styles.css') !!}" type="text/css">
     <link rel="stylesheet" href="{!! asset('css/navbar.css') !!}" type="text/css">
+    <link rel="stylesheet" href="{!! asset('css/footer.css') !!}" type="text/css">
 </head>
 
 <body>
@@ -72,7 +73,7 @@
                         </li>
                         @endif
 
-                         <!--@if (Route::has('register'))
+                        <!--@if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
@@ -104,6 +105,11 @@
             @yield('content')
         </main>
     </div>
+    <footer>
+        <div class="footer-bottom">
+            <span class="text-light">Mario Alexander Amirtharajan - 2º DAW</span>
+        </div>
+    </footer>
 </body>
 
 </html>

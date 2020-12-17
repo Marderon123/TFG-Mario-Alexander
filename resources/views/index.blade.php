@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>2º DAW- Mario Alexander</title>
+    <title>ConsulTS</title>
     <!-- Meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{!! asset('css/styles.css') !!}" type="text/css">
     <link rel="stylesheet" href="{!! asset('css/carrusel.css') !!}" type="text/css">
     <link rel="stylesheet" href="{!! asset('css/navbar.css') !!}" type="text/css">
+    <link rel="stylesheet" href="{!! asset('css/footer.css') !!}" type="text/css">
     <!-- Favicon -->
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
@@ -49,12 +50,31 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" id="home" href="#">Home</a>
-                    </li>
+                    @guest
+                    @if (Route::has('login'))
                     <li class="nav-item">
                         <a class="nav-link" id="login" href="{{ route('login') }}">Login</a>
                     </li>
+                    @endif
+                    @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" id="login" href="{{ route('login') }}">Home</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
                 </ul>
             </div>
         </div>
@@ -91,44 +111,14 @@
         </a>
     </section>
 
-    <!-- <main id="myCarousel" class="carousel slide">
-         Indicators
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-        </ol>
+    <main class="content">
+    </main>
 
-         Wrapper for slides
-        <div class="carousel-inner">
-            <div class="item active">
-                <div class="fill" style="background-image: url('../images/banner-slide-1.jpg');"></div>
-                <div class="carousel-caption slide-up">
-                    <h1 class="banner_heading">Servicio <span>de Auditoria de riesgos </span>SAP</h1>
-                    <p class="banner_txt">Evaluacion de segregación funcional en SAP a nivel de ACCESOS y AUTORIZACIONES</p>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="fill" style="background-image: url('../images/banner-slide-1.jpg');"></div>
-                <div class="carousel-caption slide-up">
-                    <h1 class="banner_heading">SOLUCION AAM <span>para la creacion automaica de </span>roles</h1>
-                    <p class="banner_txt">Reingienería de roles siempre seguros</p>
-                    <p class="banner_txt">Automatización de la creacion de roles</p>
-                    <p class="banner_txt">Reducción del 85% de los costes tecnicos </p>
-                </div>
-            </div>
+    <footer>
+        <div class="footer-bottom">
+            <span class="text-light">Mario Alexander Amirtharajan - 2º DAW</span>
         </div>
-
-         Left and right controls
-
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"> <i class="fa fa-angle-left" aria-hidden="true"></i>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next"> <i class="fa fa-angle-right" aria-hidden="true"></i>
-            <span class="sr-only">Next</span>
-        </a>
-
-    </main> -->
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

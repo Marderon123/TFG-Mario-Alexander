@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/dashboard/password', function () {
+    return view('dashboard.password');
+});
 /*
 Route::get('/admin', ['middleware' => 'EsAdmin'], function () {
     return view('admin');
@@ -38,6 +41,8 @@ Route::get('/user', [App\Http\Controllers\ClientController::class, 'index'])->na
 Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 
 Route::resource('/dashboard/users', 'App\Http\Controllers\UsersController');
+
+Route::resource('/dashboard/posts', 'App\Http\Controllers\UsersPostsController');
 /*Route::resource('/dashboard/users', UsersController::class)->names([
     'index' => '/dashboard/users',
     'store' => '/dashboard/users',

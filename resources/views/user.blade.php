@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', '2º DAW- Mario Alexander')
+@section('title', 'ConsulTS')
 
 @section('content_header')
     <h1>Dashboard User</h1>

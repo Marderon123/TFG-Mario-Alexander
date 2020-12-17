@@ -3,39 +3,42 @@
 @section('title', 'ConsulTS')
 
 @section('content_header')
-<h1>Add New Post</h1>
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">List Posts</h1>
+    <button href="" type="button" class="btn btn-primary btn-lg">
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i>Add post
+    </button>
+</div>
 @stop
 
 @section('content')
-<div>
-    <form method="POST" action="">
-        @csrf
+<table id="datapost" class="table table-dark table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Body</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($posts as $post)
+        <tr>
+            <td>{{ $post->id}}</td>
+            <td>{{ $post->title}}</td>
+            <td>{{ $post->body}}</td>
+            <td>
+                <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
+                    <a href="/dashboard/posts/{{$post->id}}/edit" class="btn btn-info">Editar</a>
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 
-        <div class="form-group col-md-8 offset-2">
-            <label for="title" class="col-md-4 col-form-label text-md-left">{{ __('Title') }}</label>
-
-            <div class="col-md-6">
-                <input id="title" type="text" class="form-control" placeholder="Title Post">
-            </div>
-        </div>
-
-        <div class="form-group col-md-8 offset-2">
-            <label for="body" class="col-md-4 col-form-label text-md-left">{{ __('Body') }}</label>
-
-            <div class="col-md-6">
-                <textarea name="body" class="form-control" rows="10" cols="50" placeholder="Write something here"></textarea>
-            </div>
-        </div>
-
-        <div class="form-group row mb-0">
-            <div class="col-md-6 offset-md-4">
-                <button type="submit" class="btn btn-primary">
-                    {{ __('Add Post') }}
-                </button>
-            </div>
-        </div>
-    </form>
-</div>
 @stop
 
 @section('css')
@@ -43,7 +46,11 @@
 @stop
 
 @section('js')
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js">
 <script>
-    console.log('Hi!');
+    $(document).ready(function() {
+        $('#datapost').DataTable();
+    });
 </script>
 @stop

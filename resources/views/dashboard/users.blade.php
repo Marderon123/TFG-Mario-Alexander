@@ -121,9 +121,7 @@
             </div>
             <form method="POST" action="">
                 @csrf
-                @isset($usuario)
-                    @method('PUT')
-                @endisset
+                @method('PUT')
                 <div class="form-group row">
                     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
@@ -178,10 +176,10 @@
 </div>
 @stop
 @section('content')
-<table class="table table-dark table-striped">
+<table id="datausers" class="table table-dark table-striped table-bordered">
     <thead>
         <tr>
-            <!--<th colspan="1"><a href="inserts/insertarproveedor.php">Nuevo</a></th>-->
+
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
@@ -197,7 +195,7 @@
             <td>{{ $usuario->usertype}}</td>
             <td>
                 <form action="/dashboard/users/{{$usuario->id}}" method="POST">
-                    <a href="" class="btn btn-info" data-toggle="modal" data-target="#modalEditar">Editar</a>
+                    <a href="/dashboard/users/{{$usuario->id}}/edit" class="btn btn-info" data-toggle="modal" data-target="#modalEditar">Editar</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -216,6 +214,8 @@
 
 @section('js')
 <script>
-
+    $(document).ready(function() {
+        $('#datausers').DataTable();
+    });
 </script>
 @stop

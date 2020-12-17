@@ -17,8 +17,17 @@ class UsersPostsController extends Controller
      */
     public function index()
     {
-        return view('dashboard.posts.index');
+        $usuario = Auth::user();
+        if (Auth::user()->usertype == 'administrador') {
+            $posts = Post::all();
+            return view('dashboard.posts.index', compact('posts'));
+        }
+        if(Auth::user()->usertype == 'client'){
+            $posts = Post::where('user_id', $usuario->id)->get();
+            return view('dashboard.posts.index', compact('usuario', 'posts'));
+        }
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -28,9 +37,7 @@ class UsersPostsController extends Controller
     public function create()
     {
         //
-        $user = Auth::user();
-        dd($user);
-        return view('dashboard.posts.createpost', compact('user'));
+        return view('dashboard.posts.createpost');
     }
 
     /**
@@ -45,9 +52,8 @@ class UsersPostsController extends Controller
         $user = Auth::user();
         $post = new Post();
         $data = $request->all();
-        $post = $user ->post()->create($data);
-        return redirect()->back;
 
+        return redirect()->back;
     }
 
     /**
@@ -69,7 +75,8 @@ class UsersPostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('dashboard.posts.editpost')->with('post', $post);
     }
 
     /**
@@ -92,6 +99,9 @@ class UsersPostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect('/dashboard/posts');
     }
 }

@@ -13,7 +13,6 @@
 
         <div class="form-group col-md-8 offset-2">
             <label for="title" class="col-md-4 col-form-label text-md-left">{{ __('Title') }}</label>
-
             <div class="col-md-6">
                 <input id="title" type="text" class="form-control" placeholder="Title Post">
             </div>

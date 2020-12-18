@@ -18,6 +18,8 @@
             <th>Id</th>
             <th>Title</th>
             <th>Body</th>
+            <th>User</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -26,6 +28,7 @@
             <td>{{ $post->id}}</td>
             <td>{{ $post->title}}</td>
             <td>{{ $post->body}}</td>
+            <td>{{ $post->user_id}}</td>
             <td>
                 <form action="{{ route('posts.destroy',$post->id) }}" method="POST">
                     <a href="/dashboard/posts/{{$post->id}}/edit" class="btn btn-info">Editar</a>

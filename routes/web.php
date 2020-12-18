@@ -18,9 +18,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/dashboard/password', function () {
-    return view('dashboard.password');
-});
+
 /*
 Route::get('/admin', ['middleware' => 'EsAdmin'], function () {
     return view('admin');
@@ -45,6 +43,8 @@ Route::resource('/dashboard/users', 'App\Http\Controllers\UsersController');
 Route::resource('/dashboard/posts', 'App\Http\Controllers\UsersPostsController');
 
 Route::resource('/dashboard/graphics', 'App\Http\Controllers\GraphicsController');
+
+Route::resource('/dashboard/password', 'App\Http\Controllers\PasswordController');
 /*Route::resource('/dashboard/users', UsersController::class)->names([
     'index' => '/dashboard/users',
     'store' => '/dashboard/users',

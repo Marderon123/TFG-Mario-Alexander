@@ -43,7 +43,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <h1><a class="navbar-brand" href="#">
-                    <!--<img src="../images/sap-logo.jpg" class="logo-brand" alt="logo"> -->Desarrollo Aplicaciones Web</a></h1>
+                    <!--<img src="../images/sap-logo.jpg" class="logo-brand" alt="logo"> -->Web de Consultoria</a></h1>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

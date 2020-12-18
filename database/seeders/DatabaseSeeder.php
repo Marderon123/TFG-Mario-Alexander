@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
             "usertype" => "administrador",
         ]);
 
-        Post::factory(40)->create();
+        Post::factory(20)->create();
     }
 }

@@ -3,7 +3,7 @@
 @section('title', 'ConsulTS')
 
 @section('content_header')
-    <h1>Dashboard User</h1>
+    <h1>Welcome</h1>
 @stop
 
 @section('content')

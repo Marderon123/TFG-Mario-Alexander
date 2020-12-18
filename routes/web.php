@@ -43,6 +43,8 @@ Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->na
 Route::resource('/dashboard/users', 'App\Http\Controllers\UsersController');
 
 Route::resource('/dashboard/posts', 'App\Http\Controllers\UsersPostsController');
+
+Route::resource('/dashboard/graphics', 'App\Http\Controllers\GraphicsController');
 /*Route::resource('/dashboard/users', UsersController::class)->names([
     'index' => '/dashboard/users',
     'store' => '/dashboard/users',

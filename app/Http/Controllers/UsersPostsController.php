@@ -7,6 +7,7 @@ use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UsersPostsController extends Controller
 {
@@ -22,7 +23,7 @@ class UsersPostsController extends Controller
             $posts = Post::all();
             return view('dashboard.posts.index', compact('posts'));
         }
-        if(Auth::user()->usertype == 'client'){
+        if (Auth::user()->usertype == 'client') {
             $posts = Post::where('user_id', $usuario->id)->get();
             return view('dashboard.posts.index', compact('usuario', 'posts'));
         }
@@ -36,7 +37,7 @@ class UsersPostsController extends Controller
      */
     public function create()
     {
-        //
+
         return view('dashboard.posts.createpost');
     }
 
@@ -48,12 +49,23 @@ class UsersPostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $user = Auth::user();
-        $post = new Post();
-        $data = $request->all();
+        $validator = Validator::make($request->all(), [
+            'title' => ['required', 'string', 'max:255'],
+            'body' => ['required', 'string', 'max:400'],
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withInput()
+                ->with('ErrorInsert', 'Completar todos los campos')
+                ->withErrors($validator);
+        } else {
+            $post = new Post();
+            $post->title = $request->get('title');
+            $post->body = $request->get('body');
+            $post->save();
 
-        return redirect()->back;
+            return redirect('/dashboard/posts');
+        }
     }
 
     /**
@@ -88,7 +100,12 @@ class UsersPostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::find($id);
+        $post->title = $request->get('title');
+        $post->body = $request->get('body');
+        $post->save();
+
+        return redirect('/dashboard/posts');
     }
 
     /**

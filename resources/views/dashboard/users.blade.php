@@ -109,71 +109,6 @@
         </div>
     </div>
 </div>
-<!-- Modal Edit -->
-<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Edit user</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form method="POST" action="">
-                @csrf
-                @method('PUT')
-                <div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                    <div class="col-md-6">
-                        <input id="name" type="text" class="form-control" name="name" value="$usuario->name">
-
-                        @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                    <div class="col-md-6">
-                        <input id="email" type="email" class="form-control " name="email" value="$usuario->email">
-
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="usertype" class="col-md-4 col-form-label text-md-right">{{ __('Usertype') }}</label>
-
-                    <div class="col-md-6">
-                        <input id="usertype" type="text" class="form-control" name="usertype" value="$usuario->usertype">
-
-                        @error('usertype')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-
-                <div class="form-group row mb-0">
-                    <div class="col-md-6 offset-md-4">
-                        <button type="submit" class="btn btn-primary">
-                            {{ __('Save User') }}
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 @stop
 @section('content')
 <table id="datausers" class="table table-dark table-striped table-bordered">
@@ -195,7 +130,7 @@
             <td>{{ $usuario->usertype}}</td>
             <td>
                 <form action="/dashboard/users/{{$usuario->id}}" method="POST">
-                    <a href="/dashboard/users/{{$usuario->id}}/edit" class="btn btn-info" data-toggle="modal" data-target="#modalEditar">Editar</a>
+                <a href="/dashboard/users/{{$usuario->id}}/edit" class="btn btn-info">Editar</a>
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>

@@ -237,22 +237,17 @@ return [
             'topnav' => true,
         ],
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'admin',
-        ],
-        [
             'text' => 'Dashboard',
             'route'  => 'admin',
             'icon' => 'fas fa-fw fa-home',
         ],
-        [
+        /*[
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
             'label'       => 4,
             'label_color' => 'success',
-        ],
+        ],*/
         ['header' => 'account'],
         [
             'text' => 'users',
@@ -261,58 +256,21 @@ return [
             'can'  => 'define-users',
         ],
         [
-            'text' => 'graphics',
-            'url'  => '/dashboard/graphics',
-            'icon' => 'fas fa-fw fa-chart-pie',
-        ],
-        [
-            'text' => 'Post',
-            'url'  => '/dashboard/posts',
-            'icon' => 'fas fa-fw fa-plus-circle',
-        ],
-        [
             'text' => 'change_password',
             'url'  => '/dashboard/password',
             'icon' => 'fas fa-fw fa-lock',
         ],
-
+        ['header' => 'INFORMATION'],
         [
-            'text'    => 'multilevel',
-            'icon'    => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'level_one',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'level_two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url'  => '#',
-                ],
-            ],
+            'text' => 'graphics',
+            'url'  => '/dashboard/graphics',
+            'icon' => 'fas fa-fw fa-chart-pie',
+
+        ],
+        [
+            'text' => 'Posts',
+            'url'  => '/dashboard/posts',
+            'icon' => 'fas fa-fw fa-plus-circle',
         ],
     ],
 

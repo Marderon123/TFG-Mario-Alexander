@@ -5,9 +5,9 @@
 @section('content_header')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">List Posts</h1>
-    <button href="" type="button" class="btn btn-primary btn-lg">
-        <i class="fas fa-plus-circle fa-sm text-white-50"></i>Add post
-    </button>
+    <a href="/dashboard/posts/create" type="button" class="btn btn-primary btn-lg">
+        <i class="fas fa-plus-circle fa-sm text-white-50"></i> Add post
+    </a>
 </div>
 @stop
 

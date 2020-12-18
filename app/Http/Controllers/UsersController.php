@@ -84,7 +84,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $usuario = User::find($id);
-        return view('dashboard.users')->with('usuario', $usuario);
+        return view('dashboard.editusers')->with('usuario', $usuario);
     }
 
     /**
@@ -101,6 +101,8 @@ class UsersController extends Controller
         $usuario->email = $request->get('email');
         $usuario->usertype = $request->get('usertype');
         $usuario->save();
+
+        return redirect('/dashboard/users');
     }
 
     /**
